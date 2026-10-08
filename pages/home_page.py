@@ -8,8 +8,11 @@ class HomePage(BasePage):
 
     @allure.step('Клик по кнопке "Заказать" в шапке или внизу страницы')
     def click_order_button(self, entry_point):
+        # Вынес метод клика по кнопке "Заказать" в шапке в класс BasePage. 
+        # Или вообще не нужно совмещать клик по этим кнопкам в классе HomePage, 
+        # а логику выбора точки входа выносить в тест?
         if entry_point == 'top':
-            self.click_element_with_wait(BasePageLocators.HEADER_ORDER_BUTTON)
+            self.click_header_order_button()
         elif entry_point == 'bottom':
             self.scroll_to_element(HomePageLocators.HOME_FINISH_ORDER_BUTTON)
             self.click_element_with_wait(HomePageLocators.HOME_FINISH_ORDER_BUTTON)

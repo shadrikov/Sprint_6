@@ -54,3 +54,7 @@ class BasePage:
     def switch_to_new_tab(self, url):
         self.driver.switch_to.window(self.driver.window_handles[-1])
         return self.wait.until(EC.url_contains(url))
+
+    @allure.step('Клик по кнопке "Заказать" в шапке')
+    def click_header_order_button(self):
+        self.click_element_with_wait(BasePageLocators.HEADER_ORDER_BUTTON)
